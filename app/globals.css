@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  /* Light theme: clean white base */
+  --color-background: #ffffff;
+  --color-foreground: #09090b;
+  
+  --shadow-primary-soft: none;
+  --font-sans: var(--font-nunito), Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+}
+
+/* Hide scrollbar for carousel/slider components */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Fade-in animation — applied to streamed content as it replaces skeletons */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.35s ease-out both;
+}
+
+/* Staggered skeleton pulse variant — slightly lighter shade */
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    #f4f4f5 8%,
+    #e4e4e7 25%,
+    #d4d4d8 50%,
+    #e4e4e7 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite linear;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
