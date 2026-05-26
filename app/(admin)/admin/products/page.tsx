@@ -73,7 +73,7 @@ export default function AdminProductsPage() {
         
         <Link 
           href="/admin/products/new"
-          className="flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-primary-hover hover:opacity-90 text-white px-5 py-2.5 rounded-xl font-bold shadow-none transition-all shrink-0"
+          className="flex items-center justify-center gap-2 bg-zinc-950 hover:bg-zinc-800 text-white px-5 py-2.5 rounded-xl font-bold shadow-none transition-all shrink-0"
         >
           <Plus size={18} />
           Tambah Produk
