@@ -62,18 +62,8 @@ export default function AdminDashboardPage() {
 
       let outOfStockCount = 0;
       if (allProducts) {
-        if (mode === 'manual') {
-          outOfStockCount = allProducts.filter((p: any) => p.status === 'habis').length;
-        } else {
-          outOfStockCount = allProducts.filter((p: any) => (stockMap[p.id] || 0) === 0).length;
-        }
-        
-        // Inject stock data into products
-        const productsWithStock = allProducts.map((p: any) => ({
-          ...p,
-          _stockCount: mode === 'gateway' ? (stockMap[p.id] || 0) : null
-        }));
-        setProducts(productsWithStock);
+        outOfStockCount = allProducts.filter((p: any) => (p.stock || 0) === 0).length;
+        setProducts(allProducts);
       }
 
       setStatsData({
@@ -120,9 +110,7 @@ export default function AdminDashboardPage() {
         conversion,
         categoryName,
         isBestSeller: !!p.is_best_seller,
-        stockDisplay: paymentMode === 'manual' 
-          ? (p.status === 'habis' ? 'Habis' : 'Ready') 
-          : `${p._stockCount || 0} Item`,
+        stockDisplay: `${p.stock || 0} Item`,
       };
     });
   }, [products, categoryMap]);
@@ -324,11 +312,11 @@ export default function AdminDashboardPage() {
                   </td>
                   <td className="px-5 py-4 text-sm font-semibold text-right">
                     <span className={
-                      p.stockDisplay === 'Habis' || p.stockDisplay === '0 Item' 
+                      (p.stock || 0) === 0
                         ? 'text-red-500 font-bold' 
                         : 'text-zinc-950'
                     }>
-                      {paymentMode === 'manual' ? `Manual (${p.stockDisplay})` : p.stockDisplay}
+                      {p.stockDisplay}
                     </span>
                   </td>
                   <td className="px-5 py-4 text-sm font-semibold text-zinc-950 text-right">{p.views.toLocaleString()}</td>

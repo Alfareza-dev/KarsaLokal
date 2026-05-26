@@ -198,6 +198,14 @@ export default function AdminEditProductPage({
 
     setIsSaving(true);
 
+    const stockVal = parseInt(formData.stock) || 0;
+    let finalStatus = formData.status;
+    if (stockVal === 0) {
+      finalStatus = "habis";
+    } else if (finalStatus === "habis") {
+      finalStatus = "ready";
+    }
+
     const payload = {
       name: formData.name,
       slug: formData.slug,
@@ -209,12 +217,12 @@ export default function AdminEditProductPage({
       faq: faqs,
       is_best_seller: formData.isTerlaris,
       is_new: formData.isBaru,
-      status: formData.status,
+      status: finalStatus,
       is_active: formData.isActive,
       weight: parseFloat(formData.weight) || 0,
       dimensions: formData.dimensions || null,
       origin_village_code: formData.originVillageCode || null,
-      stock: parseInt(formData.stock) || 0,
+      stock: stockVal,
     };
 
     try {

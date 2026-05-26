@@ -109,12 +109,15 @@ async function AsyncCatalog() {
           new Date(fs.start_at) <= now
       );
 
-      // Auto-status based on payment mode
-      let autoStatus = p.status;
-      const availableStock = stockMap[p.id] ?? 0;
+      // Gunakan stok fisik (p.stock) sebagai prioritas
+      const availableStock = p.stock ?? 0;
       
-      if (config.payment_mode === 'gateway') {
-        autoStatus = availableStock === 0 ? "habis" : "ready";
+      let autoStatus = p.status;
+      
+      if (availableStock === 0) {
+        autoStatus = "habis";
+      } else if (autoStatus === "habis") {
+        autoStatus = "ready";
       }
 
       const result = { ...p, status: autoStatus, _stock: availableStock };

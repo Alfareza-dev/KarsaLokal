@@ -154,8 +154,11 @@ export default function AdminAddProductPage() {
     
     setIsSaving(true);
     
-    // Status default: ready
-    const status = "ready";
+    const stockVal = parseInt(formData.stock) || 0;
+    let finalStatus = "ready";
+    if (stockVal === 0) {
+      finalStatus = "habis";
+    }
 
     const productDataToInsert = {
       name: formData.name,
@@ -168,12 +171,12 @@ export default function AdminAddProductPage() {
       faq: faqs,
       is_best_seller: formData.isTerlaris,
       is_new: formData.isBaru,
-      status,
+      status: finalStatus,
       is_active: formData.isActive,
       weight: parseFloat(formData.weight) || 0,
       dimensions: formData.dimensions || null,
       origin_village_code: formData.originVillageCode || null,
-      stock: parseInt(formData.stock) || 0,
+      stock: stockVal,
     };
 
     try {

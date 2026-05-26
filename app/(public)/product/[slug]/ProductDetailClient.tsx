@@ -151,11 +151,16 @@ export function ProductDetailClient({
     limited: { text: "Stok Terbatas", color: "bg-yellow-50 text-yellow-700 border-yellow-200" },
     habis: { text: "Habis", color: "bg-red-50 text-red-600 border-red-200" },
   };
-  // Auto-status based on payment mode
+  // Gunakan stok fisik secara langsung
+  const physicalStock = product.stock ?? 0;
+  
   let effectiveStatus = product.status || "ready";
-  if (paymentMode === "gateway") {
-    effectiveStatus = (inventoryStock !== null && inventoryStock === 0) ? "habis" : "ready";
+  if (physicalStock === 0) {
+    effectiveStatus = "habis";
+  } else if (effectiveStatus === "habis") {
+    effectiveStatus = "ready";
   }
+
   const status = statusLabel[effectiveStatus];
   const isOutOfStock = effectiveStatus === "habis";
 
@@ -284,15 +289,9 @@ export function ProductDetailClient({
                 <span className={`inline-flex items-center text-xs font-bold px-3 py-1.5 rounded-full border ${status.color}`}>
                   {status.text}
                 </span>
-                {inventoryStock === null ? (
-                  <span className="inline-flex items-center bg-zinc-50 text-zinc-400 text-xs font-medium px-3 py-1.5 rounded-full border border-zinc-200 animate-pulse">
-                    Memuat stok...
-                  </span>
-                ) : (
-                  <span className="inline-flex items-center bg-zinc-50 text-zinc-600 text-xs font-medium px-3 py-1.5 rounded-full border border-zinc-200">
-                    Sisa: {inventoryStock} unit
-                  </span>
-                )}
+                <span className="inline-flex items-center bg-zinc-50 text-zinc-600 text-xs font-medium px-3 py-1.5 rounded-full border border-zinc-200">
+                  Sisa: {physicalStock} unit
+                </span>
               </div>
 
               {/* Product Specs (Physical Product Metadata) */}
@@ -446,7 +445,7 @@ export function ProductDetailClient({
         productPrice={product.current_price}
         flashSalePrice={flashSalePrice}
         userId={userId}
-        availableStock={inventoryStock}
+        availableStock={physicalStock}
         productWeight={product.weight || 0}
         originVillageCode={product.origin_village_code}
       />
