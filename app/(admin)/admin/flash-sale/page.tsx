@@ -234,7 +234,7 @@ export default function AdminFlashSalePage() {
               setFormData({ product_id: "", sale_price: "", start_at: "", end_at: "", is_active: true });
             }
           }}
-          className="flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-primary-hover hover:opacity-90 text-white px-5 py-2.5 rounded-xl font-bold shadow-none transition-all shrink-0"
+          className="flex items-center justify-center gap-2 bg-zinc-950 hover:bg-zinc-800 text-white px-5 py-2.5 rounded-xl font-bold shadow-none transition-all shrink-0"
         >
           <Plus size={18} />
           {isAdding ? "Batal" : "Tambah Promo Baru"}
@@ -299,7 +299,7 @@ export default function AdminFlashSalePage() {
                   />
                 </div>
                 <div className="md:col-span-1">
-                  <button type="submit" className="w-full bg-white hover:bg-white-hover text-white font-bold py-2.5 px-4 rounded-xl transition-colors">
+                  <button type="submit" className="w-full bg-zinc-950 hover:bg-zinc-800 text-white font-bold py-2.5 px-4 rounded-xl transition-colors">
                     {editingFs ? "Update" : "Simpan"}
                   </button>
                 </div>

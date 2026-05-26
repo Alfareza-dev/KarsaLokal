@@ -310,7 +310,7 @@ export default function AdminEditProductPage({
                   required
                   value={formData.name}
                   onChange={handleInputChange}
-                  placeholder="Contoh: Netflix Premium 1 Bulan"
+                  placeholder="Contoh: Kerajinan tangan"
                   className="w-full px-4 py-3 bg-white border border-zinc-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-zinc-300 transition-all text-zinc-950"
                 />
               </div>
@@ -328,7 +328,7 @@ export default function AdminEditProductPage({
                     name="slug"
                     value={formData.slug}
                     onChange={handleInputChange}
-                    placeholder="netflix-premium-1-bulan"
+                    placeholder="Kerajinan-tangan"
                     pattern="[a-z0-9-]+"
                     title="Hanya huruf kecil, angka, dan tanda hubung (-)"
                     className="w-full px-4 py-3 bg-white border border-zinc-200 rounded-r-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-zinc-300 transition-all text-zinc-950"
