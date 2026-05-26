@@ -1,46 +1,50 @@
-# 🎀 Myuchielle
+# 🌟 KarsaLokal
 
-> **Your Digital Needs, Delivered Cute 💕**
+> **Koleksi Terkurasi, Kualitas Premium dari Karsa Lokal.**
 
-Myuchielle is a cute, pink-themed digital product price list web application. It serves as a digital catalog where users can browse product prices and be redirected to contact channels (WhatsApp, Telegram, Instagram) for ordering. 
+KarsaLokal is a premium e-commerce platform dedicated to empowering local SMEs (UMKM) by providing a high-end, minimalist digital storefront. It bridges the gap between curated local products and buyers who appreciate quality, transparency, and a premium shopping experience.
 
-## 🌟 Features
+## ✨ Features
 
-- **Cute & Feminine Design**: A pink-dominant, pastel aesthetic using Tailwind CSS and Framer Motion for subtle animations.
-- **Digital Catalog**: Browse products with categories, search functionality, and flash sales.
-- **Product Details**: Detailed product views with FAQ and "Order Now" redirection.
-- **Popup Announcements**: Configurable popup for store hours, announcements, and promos.
-- **Admin Dashboard**: Full CRUD management for products, categories, banners, flash sales, and store configurations.
-- **Analytics Tracking**: Tracks product views and "Order Now" clicks.
+- **Premium Minimalist Design**: A clean, modern aesthetic utilizing a light theme (zinc/white) to highlight product photography and create a high-end feel.
+- **Smart Logistics Engine**: Automated, weight-based village-level shipping cost calculation across Indonesia, ensuring transparent and accurate delivery fees.
+- **Flexible Fulfillment**: Support for automated courier delivery as well as Self-Pickup options.
+- **Integrated Payment Flow**: Seamless checkout process with automatic stock reduction and transaction tracking.
+- **Full-featured Admin Dashboard**:
+  - **Product & Category Management**: Easy drag-and-drop ordering and visibility toggles.
+  - **Order Processing**: Real-time transaction statuses (Pending, Processed, Shipped) with email notifications.
+  - **User Management**: Role-based access control and user lifecycle management.
+- **Dynamic Content**: Highly optimized landing pages with curated categories, flash sales, and premium copywriting.
 
 ## 🚀 Tech Stack
 
-- **Framework**: Next.js 16+
-- **Styling**: Tailwind CSS, Lucide React, Framer Motion
-- **Database & Auth**: Supabase (PostgreSQL + Supabase Auth)
-- **Deployment**: Vercel-ready
+- **Framework**: [Next.js 16+](https://nextjs.org/) (App Router, Turbopack)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) & [Framer Motion](https://www.framer.com/motion/) for fluid animations
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Database & Auth**: [Supabase](https://supabase.com/) (PostgreSQL, Supabase Auth, Row Level Security)
+- **Deployment**: Vercel-ready architecture
 
 ## 📁 Project Structure
 
-- `/app/(public)`: Public-facing pages (Homepage, Product details)
-- `/app/(admin)`: Admin dashboard and management pages
-- `/components`: Reusable UI components (Public, Admin, UI elements)
-- `/lib`: Supabase clients and helper functions
-- `/hooks`: Custom React hooks (e.g., store config, flash sale)
+- `/app/(public)`: Public storefront (Homepage, Product Catalog, Checkout, User Dashboard)
+- `/app/(admin)`: Secure Admin control panel
+- `/app/api`: Serverless API routes handling payments, shipping, and webhooks
+- `/components`: Modular React components grouped by context (Admin, Public, Shared)
+- `/lib`: Core utilities (Supabase clients, JWT, session handling, mailer)
 
 ## 🛠️ Getting Started
 
 ### Prerequisites
 - Node.js 18+
 - npm, yarn, pnpm, or bun
-- Supabase Project
+- A Supabase Project
 
 ### Installation
 
 1. **Clone the repository:**
    ```bash
-   git clone <your-repo-url>
-   cd myuchielle
+   git clone https://github.com/Alfareza-dev/KarsaLokal.git
+   cd "web app"
    ```
 
 2. **Install dependencies:**
@@ -49,7 +53,7 @@ Myuchielle is a cute, pink-themed digital product price list web application. It
    ```
 
 3. **Set up environment variables:**
-   Copy `.env.example` to `.env.local` and fill in your Supabase credentials:
+   Copy `.env.example` to `.env.local` and fill in your credentials:
    ```env
    NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
@@ -61,16 +65,16 @@ Myuchielle is a cute, pink-themed digital product price list web application. It
    npm run dev
    ```
 
-5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## 🔒 Admin Access
+## 🔒 Security & Admin Access
 
-The admin dashboard is protected. Access it via `/admin/login` using your configured Supabase Auth credentials. All admin routes (`/admin/*`) are protected by a Next.js proxy middleware.
+The admin dashboard is protected via robust session management and JWT verification. Access it via `/admin/login` using an account granted the `admin` role. All `/admin/*` and `/api/admin/*` routes are protected by Next.js middleware and API route guards.
 
-## 🎨 Design System
+## 🎨 Design Philosophy
 
-- **Primary Color**: Pink-400 (`#F472B6`)
-- **Accent Color**: Pink-500 (`#EC4899`)
-- **Background**: Pink-50 (`#FDF2F8`)
-- **Typography**: Nunito (Google Fonts)
-- **Styling Details**: Rounded corners (`rounded-2xl`, `rounded-3xl`), soft shadows, and subtle hover animations (`hover:scale-105`).
+KarsaLokal utilizes a strictly clean Premium Light Theme:
+- **Backgrounds**: Pure white (`bg-white`) and subtle off-whites (`bg-zinc-50`).
+- **Typography**: Inter / Modern Sans-serif with deep zinc contrasts (`text-zinc-950`, `text-zinc-500`).
+- **Borders**: Delicate dividers (`border-zinc-200`).
+- No generic bright primary colors—relying instead on layout spacing, typography, and high-quality imagery to deliver a premium feel.
